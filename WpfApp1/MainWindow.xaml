@@ -1,0 +1,122 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="440" Width="760">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="50"></RowDefinition>
+            <RowDefinition Height ="110"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Покровитель по древнесловянскому гороскопу"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock Text="Ввведите дату своего рождения:"/>
+            <WrapPanel Orientation="Horizontal">
+                <TextBlock Margin="10,55,0,0">Месяц</TextBlock>
+                <ComboBox Name="CBT" Height ="40" Width="160" HorizontalAlignment ="Left" Margin="15,55,0,0">
+                    <ComboBoxItem Name="Com0">Январь</ComboBoxItem>
+                    <ComboBoxItem Name="Com1">Февраль</ComboBoxItem>
+                    <ComboBoxItem Name="Com2">Март</ComboBoxItem>
+                    <ComboBoxItem Name="Com3">Апрель</ComboBoxItem>
+                    <ComboBoxItem Name="Com4">Май</ComboBoxItem>
+                    <ComboBoxItem Name="Com5">Июнь</ComboBoxItem>
+                    <ComboBoxItem Name="Com6">Июль</ComboBoxItem>
+                    <ComboBoxItem Name="Com7">Август</ComboBoxItem>
+                    <ComboBoxItem Name="Com8">Сентябрь</ComboBoxItem>
+                    <ComboBoxItem Name="Com9">Октябрь</ComboBoxItem>
+                    <ComboBoxItem Name="Com10">Ноябрь</ComboBoxItem>
+                    <ComboBoxItem Name="Com11">Декабрь</ComboBoxItem>
+                </ComboBox>
+                <TextBlock Margin="45,55,0,0">День</TextBlock>
+                <TextBox x:Name="TextBox" Height ="40" Width="100" Margin="15,55,0,0" FontSize ="20" Padding="10,5,0,0"></TextBox>
+                <Button x:Name="but" Height ="40" Width="160" Margin="35,55,0,0" Padding="0,0,5,5" Click="Button_Click" >Результат</Button>
+            </WrapPanel>
+        </Grid>
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500"></ColumnDefinition>
+                <ColumnDefinition Width="260"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" >
+                <Image Source="Resourse/71611689.jpg" Width="200" Height ="200"></Image> 
+            </Grid>
+            <TextBlock Margin="10,0,0,0">Результат:</TextBlock>
+
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result0" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap">Мороз (Морозко, Трескун, Студенец).</TextBlock>
+                <TextBlock x:Name="Result00" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap">Бог-повелитель зимнего холода, его время приходится на 24 декабря - 30 января.</TextBlock>
+            </WrapPanel>
+
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result1" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap">Велес</TextBlock>
+                <TextBlock x:Name="Result2" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap">Бог-медведь, покровитель охотников, его период с 31 января - 28 февраля.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result3" Margin="10,30,0,0" Visibility="Collapsed">Макошь</TextBlock>
+                <TextBlock x:Name="Result4" Margin="10,30,0,0" Visibility="Collapsed">Жена Велеса, богиня судьбы, плодородия и семейного очага, <LineBreak/> ее период приходится на сухой месяц март.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result5" Margin="10,30,0,0" Visibility="Collapsed">Жива</TextBlock>
+                <TextBlock x:Name="Result6" Margin="10,30,0,0" Visibility="Collapsed">Богиня плодородия, юности и красоты, покровительствует <LineBreak/> людям рожденным в апреле.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result7" Margin="10,30,0,0" Visibility="Collapsed">Ярила (Ярило)</TextBlock>
+                <TextBlock x:Name="Result8" Margin="10,30,0,0" Visibility="Collapsed">Бог весны и расцвета всех жизненных сил человека, <LineBreak/> период 1 - 14 мая.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result9" Margin="10,30,0,0" Visibility="Collapsed">Леля</TextBlock>
+                <TextBlock x:Name="Result10" Margin="10,30,0,0" Visibility="Collapsed">Богиня девичьей любви, красоты и счастья, период <LineBreak/> 15 мая - 2 июня.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result11" Margin="10,30,0,0" Visibility="Collapsed">Кострома</TextBlock>
+                <TextBlock x:Name="Result12" Margin="10,30,0,0" Visibility="Collapsed">Покровительница плодородия и лета, правит <LineBreak/> со 2 - 12 июня.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result13" Margin="10,30,0,0" Visibility="Collapsed">Додола</TextBlock>
+                <TextBlock x:Name="Result14" Margin="10,30,0,0" Visibility="Collapsed">Богиня лета, мудрости, песен и веселья, также <LineBreak/>  упоминается в обрядах вызова дождя, <LineBreak/> покравительствует с 13 июня - 6 июля. </TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result15" Margin="10,30,0,0" Visibility="Collapsed">Иван Купала</TextBlock>
+                <TextBlock x:Name="Result16" Margin="10,30,0,0" Visibility="Collapsed">24 июня, праздник Солнца, лета и зеленого <LineBreak/> покоса.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result17" Margin="10,30,0,0" Visibility="Collapsed">Лада</TextBlock>
+                <TextBlock x:Name="Result18" Margin="10,30,0,0" Visibility="Collapsed">Богиня-мать, хранительница домашнего очага <LineBreak/> покровительствует с 7 - 31 июля.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result19" Margin="10,30,0,0" Visibility="Collapsed">Перун</TextBlock>
+                <TextBlock x:Name="Result20" Margin="10,30,0,0" Visibility="Collapsed">С 1 - 28 августа..</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result21" Margin="10,30,0,0" Visibility="Collapsed">Сева</TextBlock>
+                <TextBlock x:Name="Result22" Margin="10,30,0,0" Visibility="Collapsed">Богиня садовых плодов, покровительница людей, <LineBreak/> рожденных с 29 августа - 13 сентября.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result23" Margin="10,30,0,0" Visibility="Collapsed">Рожаница</TextBlock>
+                <TextBlock x:Name="Result24" Margin="10,30,0,0" Visibility="Collapsed">Повелительница жизни и плодородия, период <LineBreak/> с 14 - 27 сентября.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result25" Margin="10,30,0,0" Visibility="Collapsed">Сварожичи</TextBlock>
+                <TextBlock x:Name="Result26" Margin="10,30,0,0" Visibility="Collapsed">Дети Сварога, бога огня, покровительствует <LineBreak/> с 28 сентября - 15 октября.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result27" Margin="10,30,0,0" Visibility="Collapsed">Морена</TextBlock>
+                <TextBlock x:Name="Result28" Margin="10,30,0,0" Visibility="Collapsed">Богиня увядания и смерти, юности и красоты, покровительствует <LineBreak/> людям рожденным с 16 октября - 8 ноября.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result29" Margin="10,30,0,0" Visibility="Collapsed">Зима</TextBlock>
+                <TextBlock x:Name="Result30" Margin="10,30,0,0" Visibility="Collapsed">Период с 9 - 28 ноября.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="Result31" Margin="10,30,0,0" Visibility="Collapsed">Карачун</TextBlock>
+                <TextBlock x:Name="Result32" Margin="10,30,0,0" Visibility="Collapsed">Повелитель мороза, холода и мрака, период его правления <LineBreak/> приходится на 29 ноября - 23 декабря.</TextBlock>
+            </WrapPanel>
+        </Grid>
+    </Grid>
+</Window>
