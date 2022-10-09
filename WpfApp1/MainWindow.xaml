@@ -5,118 +5,218 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="440" Width="760">
+        Title="Покровитель по гороскопу" Height="480" Width="780" MaxHeight="480" MaxWidth="780" MinHeight="480" MinWidth="780" Background="AliceBlue">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border CornerRadius="20" BorderBrush="CadetBlue" BorderThickness="2"
+                    Background="LightBlue" Height="40" Width="150" >
+                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="Результат"/>
+            </Border>
+        </ControlTemplate>
+ 
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height ="50"></RowDefinition>
-            <RowDefinition Height ="110"></RowDefinition>
+            <RowDefinition Height ="90"></RowDefinition>
+            <RowDefinition Height ="100"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <TextBlock Text="Покровитель по древнесловянскому гороскопу"/>
+            <TextBlock Text="Выберите гороскоп:"/>
+            <StackPanel x:Name="stackPanel" Margin="15,40,0,0" Orientation="Horizontal">
+                <RadioButton x:Name="Slav" GroupName="Languages" Content="Древнесловянский" Margin="15,0,0,0" Checked="RBSlavic_Checked"/>
+                <RadioButton x:Name="Jap" GroupName="Languages" Content="Японский" Margin="15,0,0,0" Checked="RBJapan_Checked"/>
+            </StackPanel>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" x:Name="GR1" Visibility="Collapsed" IsEnabled="False">
+
             <TextBlock Text="Ввведите дату своего рождения:"/>
-            <WrapPanel Orientation="Horizontal">
-                <TextBlock Margin="10,55,0,0">Месяц</TextBlock>
-                <ComboBox Name="CBT" Height ="40" Width="160" HorizontalAlignment ="Left" Margin="15,55,0,0">
-                    <ComboBoxItem Name="Com0">Январь</ComboBoxItem>
-                    <ComboBoxItem Name="Com1">Февраль</ComboBoxItem>
-                    <ComboBoxItem Name="Com2">Март</ComboBoxItem>
-                    <ComboBoxItem Name="Com3">Апрель</ComboBoxItem>
-                    <ComboBoxItem Name="Com4">Май</ComboBoxItem>
-                    <ComboBoxItem Name="Com5">Июнь</ComboBoxItem>
-                    <ComboBoxItem Name="Com6">Июль</ComboBoxItem>
-                    <ComboBoxItem Name="Com7">Август</ComboBoxItem>
-                    <ComboBoxItem Name="Com8">Сентябрь</ComboBoxItem>
-                    <ComboBoxItem Name="Com9">Октябрь</ComboBoxItem>
-                    <ComboBoxItem Name="Com10">Ноябрь</ComboBoxItem>
-                    <ComboBoxItem Name="Com11">Декабрь</ComboBoxItem>
+            <WrapPanel Orientation="Horizontal" >
+                <TextBlock x:Name="year" Margin="10,50,0,0" Visibility="Collapsed" IsEnabled="False">Год</TextBlock>
+                <TextBox x:Name="TextBox0" Height ="40" Width="80" Margin="10,50,0,0" FontSize ="20" Padding="10,5,0,0" Visibility="Collapsed" IsEnabled="False"></TextBox>
+                <TextBlock x:Name="Mes" Margin="20,50,0,0">Месяц</TextBlock>
+                <ComboBox Name="CBT" Height ="40" Width="160" HorizontalAlignment ="Left" Margin="10,50,0,0">
+                    <ComboBoxItem>Январь</ComboBoxItem>
+                    <ComboBoxItem>Февраль</ComboBoxItem>
+                    <ComboBoxItem>Март</ComboBoxItem>
+                    <ComboBoxItem>Апрель</ComboBoxItem>
+                    <ComboBoxItem>Май</ComboBoxItem>
+                    <ComboBoxItem>Июнь</ComboBoxItem>
+                    <ComboBoxItem>Июль</ComboBoxItem>
+                    <ComboBoxItem>Август</ComboBoxItem>
+                    <ComboBoxItem>Сентябрь</ComboBoxItem>
+                    <ComboBoxItem>Октябрь</ComboBoxItem>
+                    <ComboBoxItem>Ноябрь</ComboBoxItem>
+                    <ComboBoxItem>Декабрь</ComboBoxItem>
                 </ComboBox>
-                <TextBlock Margin="45,55,0,0">День</TextBlock>
-                <TextBox x:Name="TextBox" Height ="40" Width="100" Margin="15,55,0,0" FontSize ="20" Padding="10,5,0,0"></TextBox>
-                <Button x:Name="but" Height ="40" Width="160" Margin="35,55,0,0" Padding="0,0,5,5" Click="Button_Click" >Результат</Button>
+                <TextBlock Name="day" Margin="20,50,0,0">День</TextBlock>
+                <TextBox x:Name="TextBox1" Height ="40" Width="80" Margin="10,50,0,0" FontSize ="20" Padding="10,5,0,0"></TextBox>
+                <Button x:Name="but" Style="{StaticResource BTNStyle}" Template="{StaticResource btTemplate}" Height ="40" Width="150" Margin="20,50,0,0"  Click="Button_Click">Результат</Button>
             </WrapPanel>
         </Grid>
-        <Grid Grid.Row="2" >
+        <Grid Grid.Row="2" x:Name="GR3" >
+            
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="500"></ColumnDefinition>
-                <ColumnDefinition Width="260"></ColumnDefinition>
+                <ColumnDefinition Width="480"></ColumnDefinition>
+                <ColumnDefinition Width="300"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1" >
-                <Image Source="Resourse/71611689.jpg" Width="200" Height ="200"></Image> 
+                <Border Background="Gainsboro" Width="246" Height="231">
+                    <Image x:Name="img1" Source="Resourse/Dodola.jpg" Stretch="Fill" Width="240" Height ="225" Visibility="Collapsed"></Image>
+                </Border>
+                <Image x:Name="img2" Source="Resourse/IvanKupalo.jpg" Stretch="Fill" Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img3" Source="Resourse/Karachun.jpg" Stretch="Fill" Width="230" Height ="215" Visibility="Collapsed"></Image>
+                <Image x:Name="img4" Source="Resourse/Kostroma.jpg" Stretch="Fill" Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img5" Source="Resourse/Lada.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img6" Source="Resourse/Letnica.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img7" Source="Resourse/Makosh.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img8" Source="Resourse/Maya.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img9" Source="Resourse/Morana.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img10" Source="Resourse/Perun.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img11" Source="Resourse/Rod.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img12" Source="Resourse/Roganica.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img13" Source="Resourse/Stribog.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img14" Source="Resourse/Svarogich.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img15" Source="Resourse/Veles.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img16" Source="Resourse/Yarilo.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img17" Source="Resourse/Zima.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+
+                <Image x:Name="img01" Source="Resourse/Krisa.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img02" Source="Resourse/Bik.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img03" Source="Resourse/Tigr.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img04" Source="Resourse/Krokik.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img05" Source="Resourse/Dragon.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img06" Source="Resourse/Zmeya.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img07" Source="Resourse/Loshad.png" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img08" Source="Resourse/Koza.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img09" Source="Resourse/Obezyana.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img010" Source="Resourse/Petuh.jpg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img011" Source="Resourse/Sobaka.jpeg" Stretch="Fill"  Width="240" Height ="225" Visibility="Collapsed"></Image>
+                <Image x:Name="img012" Source="Resourse/Svin.jpg" Stretch="Fill"  Width="240" Height ="225"  Visibility="Collapsed"></Image>
+                
             </Grid>
             <TextBlock Margin="10,0,0,0">Результат:</TextBlock>
 
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result0" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap">Мороз (Морозко, Трескун, Студенец).</TextBlock>
-                <TextBlock x:Name="Result00" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap">Бог-повелитель зимнего холода, его время приходится на 24 декабря - 30 января.</TextBlock>
+                <TextBlock x:Name="Result0" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Стрибог</TextBlock>
+                <TextBlock x:Name="Result00" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 21 января — 20 февраля.<LineBreak/>Бог ветра и бури. Покровительствует людям обладающим высоким интеллектом, способным поддержать разговор на любую тему и добиваться расположения любого человека. С ними всегда интересно и комфортно.</TextBlock>
             </WrapPanel>
 
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result1" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap">Велес</TextBlock>
-                <TextBlock x:Name="Result2" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap">Бог-медведь, покровитель охотников, его период с 31 января - 28 февраля.</TextBlock>
+                <TextBlock x:Name="Result1" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Велес</TextBlock>
+                <TextBlock x:Name="Result2" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 22 июня — 6 июля и с 8 — 22 июля.<LineBreak/>Бог мудрости и плодородия. Рожденые в его период обладают любопытством и часто интересуются мистикой. Многие обладают острым умом.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result3" Margin="10,30,0,0" Visibility="Collapsed">Макошь</TextBlock>
-                <TextBlock x:Name="Result4" Margin="10,30,0,0" Visibility="Collapsed">Жена Велеса, богиня судьбы, плодородия и семейного очага, <LineBreak/> ее период приходится на сухой месяц март.</TextBlock>
+                <TextBlock x:Name="Result3" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Макошь</TextBlock>
+                <TextBlock x:Name="Result4" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 12 — 27 сентября<LineBreak/>Богиня семейго благополучия. Покровительствует людям обладающим мудростью, усидчивостью и чувством ответственности. Такие люди умеют добиваться своего.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result5" Margin="10,30,0,0" Visibility="Collapsed">Жива</TextBlock>
-                <TextBlock x:Name="Result6" Margin="10,30,0,0" Visibility="Collapsed">Богиня плодородия, юности и красоты, покровительствует <LineBreak/> людям рожденным в апреле.</TextBlock>
+                <TextBlock x:Name="Result5" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Род</TextBlock>
+                <TextBlock x:Name="Result6" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 21 февраля — 20 марта.<LineBreak/>Прорадитель первых богов. Рожденные под его покровительством готовы быть причастными к жизни своих друзей и знакомых. Они способны обаять и постараться понять всех на земле.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result7" Margin="10,30,0,0" Visibility="Collapsed">Ярила (Ярило)</TextBlock>
-                <TextBlock x:Name="Result8" Margin="10,30,0,0" Visibility="Collapsed">Бог весны и расцвета всех жизненных сил человека, <LineBreak/> период 1 - 14 мая.</TextBlock>
+                <TextBlock x:Name="Result7" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Ярило</TextBlock>
+                <TextBlock x:Name="Result8" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 21 марта — 20 апреля.<LineBreak/>Бог весеннего плодородия. Люди, которые родились под его покровительством любят жизнь и всех людей. Они являются главными вдохновителями коллектива, очень оптимистичны и способны разрядить даже самую напряженную атмосферу.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result9" Margin="10,30,0,0" Visibility="Collapsed">Леля</TextBlock>
-                <TextBlock x:Name="Result10" Margin="10,30,0,0" Visibility="Collapsed">Богиня девичьей любви, красоты и счастья, период <LineBreak/> 15 мая - 2 июня.</TextBlock>
+                <TextBlock x:Name="Result9" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Летница</TextBlock>
+                <TextBlock x:Name="Result10" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 22 мая — 2 июня.<LineBreak/>Богиня красоты и счастья. Люди, родившиеся под ее покровительством, отличаются легкостью, задором, чувством юмора, подвижной психикой и быстрой реакцией.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result11" Margin="10,30,0,0" Visibility="Collapsed">Кострома</TextBlock>
-                <TextBlock x:Name="Result12" Margin="10,30,0,0" Visibility="Collapsed">Покровительница плодородия и лета, правит <LineBreak/> со 2 - 12 июня.</TextBlock>
+                <TextBlock x:Name="Result11" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Кострома</TextBlock>
+                <TextBlock x:Name="Result12" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 3 — 12 июня.<LineBreak/>Богиня лета и урожая. родившиеся в даты этого чертога, отличаются любвеобильностью, а порой и ветреностью. Умеют спокойно переносить невзгоды.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result13" Margin="10,30,0,0" Visibility="Collapsed">Додола</TextBlock>
-                <TextBlock x:Name="Result14" Margin="10,30,0,0" Visibility="Collapsed">Богиня лета, мудрости, песен и веселья, также <LineBreak/>  упоминается в обрядах вызова дождя, <LineBreak/> покравительствует с 13 июня - 6 июля. </TextBlock>
+                <TextBlock x:Name="Result13" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Додола</TextBlock>
+                <TextBlock x:Name="Result14" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 13 — 21 июня.<LineBreak/>Богиня грозы, дождя и молодости. Рожденные под ее покровительством имеют мягкий и податливый характер, романтизм и щедрость. Часто пологаются на удачу.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result15" Margin="10,30,0,0" Visibility="Collapsed">Иван Купала</TextBlock>
-                <TextBlock x:Name="Result16" Margin="10,30,0,0" Visibility="Collapsed">24 июня, праздник Солнца, лета и зеленого <LineBreak/> покоса.</TextBlock>
+                <TextBlock x:Name="Result15" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Иван Купала</TextBlock>
+                <TextBlock x:Name="Result16" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">7 июля.<LineBreak/>Бог лета и плодородия. Люди, рожденные под покровительством Купалы, обычно являются душой компанией, также они очень гостеприимны, любят своих друзей и семью.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result17" Margin="10,30,0,0" Visibility="Collapsed">Лада</TextBlock>
-                <TextBlock x:Name="Result18" Margin="10,30,0,0" Visibility="Collapsed">Богиня-мать, хранительница домашнего очага <LineBreak/> покровительствует с 7 - 31 июля.</TextBlock>
+                <TextBlock x:Name="Result17" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Лада</TextBlock>
+                <TextBlock x:Name="Result18" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 21 апреля — 21 мая.<LineBreak/>Богиня любви и красоты. Рожденые под ее покровительством романтичны, любят природу, искусство и все прекрасное. При этом им свойственно трудолюбие.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result19" Margin="10,30,0,0" Visibility="Collapsed">Перун</TextBlock>
-                <TextBlock x:Name="Result20" Margin="10,30,0,0" Visibility="Collapsed">С 1 - 28 августа..</TextBlock>
+                <TextBlock x:Name="Result19" Margin="10,30,0,0" Visibility="Collapsed" Style="{StaticResource TBStyle}" TextWrapping="Wrap" IsEnabled="False">Перун</TextBlock>
+                <TextBlock x:Name="Result20" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 24 декабря - 20 января.<LineBreak/>Бог грома и молнии. Рожденые под его покровительством сильны духом, целеустремленны и упорны в достижении поставленных целей. Такие люди живут по собственным правилам и всегда имеют свою точку зрения.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result21" Margin="10,30,0,0" Visibility="Collapsed">Сева</TextBlock>
-                <TextBlock x:Name="Result22" Margin="10,30,0,0" Visibility="Collapsed">Богиня садовых плодов, покровительница людей, <LineBreak/> рожденных с 29 августа - 13 сентября.</TextBlock>
+                <TextBlock x:Name="Result21" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Майя</TextBlock>
+                <TextBlock x:Name="Result22" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 23 июля - 8 сентября.<LineBreak/> Богиня природы и садов. Покравительстует обладателям делекатности, спокойного характера и людям знающим меру. Также обладателям мягкого чувства юмора.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result23" Margin="10,30,0,0" Visibility="Collapsed">Рожаница</TextBlock>
-                <TextBlock x:Name="Result24" Margin="10,30,0,0" Visibility="Collapsed">Повелительница жизни и плодородия, период <LineBreak/> с 14 - 27 сентября.</TextBlock>
+                <TextBlock x:Name="Result23" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Рожаница</TextBlock>
+                <TextBlock x:Name="Result24" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 9 — 11 сентября.<LineBreak/>Богиня жизни и судьбы. Рожденые в данный период трудолюбивы, любят покой и всегда пологаются только на себя.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result25" Margin="10,30,0,0" Visibility="Collapsed">Сварожичи</TextBlock>
-                <TextBlock x:Name="Result26" Margin="10,30,0,0" Visibility="Collapsed">Дети Сварога, бога огня, покровительствует <LineBreak/> с 28 сентября - 15 октября.</TextBlock>
+                <TextBlock x:Name="Result25" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Сварожич</TextBlock>
+                <TextBlock x:Name="Result26" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 28 сентября - 15 октября.<LineBreak/>Бог огня. Рожденые в его период трудолюбивы, часто являются мастерами своего дела, обладают хорошим вкусом и стремятся к прекрасному.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result27" Margin="10,30,0,0" Visibility="Collapsed">Морена</TextBlock>
-                <TextBlock x:Name="Result28" Margin="10,30,0,0" Visibility="Collapsed">Богиня увядания и смерти, юности и красоты, покровительствует <LineBreak/> людям рожденным с 16 октября - 8 ноября.</TextBlock>
+                <TextBlock x:Name="Result27" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Морана</TextBlock>
+                <TextBlock x:Name="Result28" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 16 октября - 8 ноября.<LineBreak/>Богиня смерти и холода. Рожденные в даты покровительства Мораны, отличаются силой характера, целеустремленностью, уверенностью в себе и выносливостью.</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result29" Margin="10,30,0,0" Visibility="Collapsed">Зима</TextBlock>
-                <TextBlock x:Name="Result30" Margin="10,30,0,0" Visibility="Collapsed">Период с 9 - 28 ноября.</TextBlock>
+                <TextBlock x:Name="Result29" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Зима</TextBlock>
+                <TextBlock x:Name="Result30" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 9 - 30 ноября.<LineBreak/>Повелительница холода. Рожденные под ее покровительством отличаются благородством и нравственностью, сдержанностью и принципиальностью. Воспринимают мир таким, какой он есть</TextBlock>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <TextBlock x:Name="Result31" Margin="10,30,0,0" Visibility="Collapsed">Карачун</TextBlock>
-                <TextBlock x:Name="Result32" Margin="10,30,0,0" Visibility="Collapsed">Повелитель мороза, холода и мрака, период его правления <LineBreak/> приходится на 29 ноября - 23 декабря.</TextBlock>
+                <TextBlock x:Name="Result31" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Карачун</TextBlock>
+                <TextBlock x:Name="Result32" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">С 1 - 23 декабря.<LineBreak/>Бог холода и мрака. Люди, рожденные под его покровительством, являются настоящими трудоголиками, они в прямом смысле слова не могут сидеть без дела.</TextBlock>
             </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult21" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Крыса</TextBlock>
+                <TextBlock x:Name="JResult22" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Поведение Крысы очень необычно. Она стремится к общению и имеет чаще всего много друзей, при этом своих дел не доверяет никому и ни с кем не сближается сверх меры.</TextBlock>
+            </WrapPanel>
+
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult0" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Бык</TextBlock>
+                <TextBlock x:Name="JResult00" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Бык излучает уверенность в себе и своих силах. Он идет по жизни очень спокойно, как будто не принимая всерьез заботы и проблемы других людей.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult1" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Тигр</TextBlock>
+                <TextBlock x:Name="JResult2" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">«Горячее сердце» — лучшее описание характера человека, родившегося в год Тигра. Он чаще прислушивается к эмоциям, чем к логическим аргументам, бесконечно искренен в чувствах и не признает полумер.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult3" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Кролик</TextBlock>
+                <TextBlock x:Name="JResult4" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Человек, родившийся в год Кролика, всегда очень мил в общении, трогательно сентиментален. Его симпатию которого легко завоевать, заявив о своей законопослушности.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult5" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Дракон</TextBlock>
+                <TextBlock x:Name="JResult6" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Умный и одаренный от природы Дракон всегда стремится к совершенству, предъявляя к себе столь же высокие требования, что и к другим.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult7" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Змея</TextBlock>
+                <TextBlock x:Name="JResult8" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Умениям Змеи пользоваться одновременно знаниями, логикой и интуицией, могут позавидовать многие. Она ко всему относится серьезно и поэтому не всегда понимает шутки.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult9" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Лошадь</TextBlock>
+                <TextBlock x:Name="JResult10" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Лошадь не только трудолюбива, но и независима, поэтому предпочитает работать в одиночку, а не в команде.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult11" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Коза</TextBlock>
+                <TextBlock x:Name="JResult12" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Козе не откажешь в очаровании, элегантности и артистическом даре. У нее доброе сердце и в помощи она не откажет.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult13" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Обезьяна</TextBlock>
+                <TextBlock x:Name="JResult14" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Обезьяны — натуры необыкновенно занятные и неугомонные, которые не дают покоя ни себе, ни другим. Втягивают в свой круг общения новых людей</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult15" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Петух</TextBlock>
+                <TextBlock x:Name="JResult16" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Хвастун и мечтатель, который сразу выделяется из толпы благодаря экстравагантной одежде и необычному поведению. Довольно трудолюбив и цулеустремлен.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult17" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Собака</TextBlock>
+                <TextBlock x:Name="JResult18" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Собака хороший друг и верный возлюбленный, достойный абсолютного доверия помощник и настоящий альтруист.</TextBlock>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <TextBlock x:Name="JResult19" Margin="10,30,0,0" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource TBStyle}" IsEnabled="False">Кабан</TextBlock>
+                <TextBlock x:Name="JResult20" Margin="10,0,0,0" Visibility="Collapsed" TextWrapping="Wrap" IsEnabled="False">Кабан всегда честен с окружающими от них ждет того же. Склонен всем доверять, поэтому иногда кажется наивным.</TextBlock>
+            </WrapPanel>
+
         </Grid>
     </Grid>
 </Window>

@@ -94,9 +94,38 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resourse\71611689.jpg" />
+    <Resource Include="Resourse\Dodola.jpg" />
+    <Resource Include="Resourse\IvanKupalo.jpg" />
+    <Resource Include="Resourse\Karachun.jpg" />
+    <Resource Include="Resourse\Kostroma.jpg" />
+    <Resource Include="Resourse\Lada.jpg" />
+    <Resource Include="Resourse\Letnica.jpg" />
+    <Resource Include="Resourse\Makosh.jpg" />
+    <Resource Include="Resourse\Maya.jpg" />
+    <Resource Include="Resourse\Morana.jpg" />
+    <Resource Include="Resourse\Perun.jpg" />
+    <Resource Include="Resourse\Rod.jpg" />
+    <Resource Include="Resourse\Roganica.jpg" />
+    <Resource Include="Resourse\Stribog.jpg" />
+    <Resource Include="Resourse\Svarogich.jpg" />
+    <Resource Include="Resourse\Veles.jpg" />
+    <Resource Include="Resourse\Yarilo.jpg" />
+    <Resource Include="Resourse\Zima.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourse\Bik.jpg" />
+    <Resource Include="Resourse\Dragon.jpg" />
+    <Resource Include="Resourse\Koza.jpg" />
+    <Resource Include="Resourse\Krisa.jpg" />
+    <Resource Include="Resourse\Krokik.jpg" />
+    <Resource Include="Resourse\Loshad.png" />
+    <Resource Include="Resourse\Obezyana.jpg" />
+    <Resource Include="Resourse\Petuh.jpg" />
+    <Resource Include="Resourse\Sobaka.jpeg" />
+    <Resource Include="Resourse\Svin.jpg" />
+    <Resource Include="Resourse\Tigr.jpg" />
+    <Resource Include="Resourse\Zmeya.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
